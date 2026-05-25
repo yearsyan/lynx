@@ -18,6 +18,7 @@ declare global {
     ExplorerModule: {
       openScan(): void;
       openSchema(url: string): void;
+      reproduceArrayBufferObject(payload: { body: ArrayBuffer }): void;
       getSettingInfo(): Record<string, unknown>;
       setThreadMode(index: number): void;
       saveThemePreferences(key: string, value: string): void;

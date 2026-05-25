@@ -34,10 +34,21 @@ napi_value openSchema(napi_env env, napi_callback_info info) {
   return 0;
 }
 
+napi_value reproduceArrayBufferObject(napi_env env, napi_callback_info info) {
+  OutputDebugStringA(
+      "Lynx Explorer ArrayBuffer object repro native method reached.\n");
+  napi_value undefined;
+  napi_get_undefined(env, &undefined);
+  return undefined;
+}
+
 napi_value ExplorerModuleCreator(napi_env env, napi_value exports,
                                  const char* module_name, void* opaque) {
   napi_value func;
   napi_create_function(env, "openSchema", 1, &openSchema, 0, &func);
   napi_set_named_property(env, exports, "openSchema", func);
+  napi_create_function(env, "reproduceArrayBufferObject", 1,
+                       &reproduceArrayBufferObject, 0, &func);
+  napi_set_named_property(env, exports, "reproduceArrayBufferObject", func);
   return exports;
 }

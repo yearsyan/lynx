@@ -24,3 +24,12 @@ export default function Explorer() {
 }
 
 root.render(<Explorer />);
+
+if (lynx.__globalProps.platform === 'windows') {
+  setTimeout(() => {
+    'background only';
+    NativeModules.ExplorerModule.reproduceArrayBufferObject({
+      body: new ArrayBuffer(0),
+    });
+  }, 0);
+}
